@@ -11,9 +11,12 @@ namespace Blog.Models
     {
         private ICollection<Tag> tags;
 
+        private ICollection<Comment> comments;
+
         public Article()
         {
             this.tags = new HashSet<Tag>();
+            this.comments = new List<Comment>();
         }
 
         public Article(string authorId, string title, string content, int categoryId)
@@ -23,6 +26,7 @@ namespace Blog.Models
             this.Content = content;
             this.CategoryId = categoryId;
             this.tags = new HashSet<Tag>();
+            this.comments = new List<Comment>();
         }
 
         [Key]
@@ -44,12 +48,21 @@ namespace Blog.Models
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set;}
+
+        public virtual Comment Comment { get; set; }
          
         public virtual ICollection<Tag> Tags
         {
             get { return this.tags; }
             set { this.tags = value; }
         }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
+
 
         public bool IsAuthor(string name)
         {

@@ -25,6 +25,8 @@ namespace Blog.Models
         
         public List<Category> Categories { get; set; }
 
+        public ICollection<Comment> Comments { get; set; }
+
         public string Tags { get; set; }
     }
 }

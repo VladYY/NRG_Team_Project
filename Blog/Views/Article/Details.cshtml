@@ -1,4 +1,5 @@
 ﻿@model Blog.Models.Article
+@using Blog.Models
 
 @{
     ViewBag.Title = "Details";
@@ -18,7 +19,7 @@
             @Model.Content
         </p>
         <small class="author">
-            --author @Model.Author.FullName
+            Author @Model.Author.FullName
         </small>
         <footer>
             <div class="pull-left">
@@ -36,6 +37,15 @@
 
                 @Html.ActionLink("Back", "Index", "Article", null, new { @class = "btn btn-default btn-xs" })
 
+            </div>
+            <br />
+            <div>
+                <p>
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.Partial("_CommentPartial", new Comment() { ArticleId = Model.Id })
+                    }
+                </p>
             </div>
         </footer>
     </article>
