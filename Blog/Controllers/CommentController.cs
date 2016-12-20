@@ -39,15 +39,8 @@ namespace Blog.Controllers
                     return HttpNotFound();
                 }
 
-                // Get User Id
-                var userId = database.Users
-                    .Where(u => u.UserName == this.User.Identity.Name)
-                    .First()
-                    .Id;
-
                 comment.Article = article;
                 comment.ArticleId = article.Id;
-                comment.AuthorId = userId;
 
                 article.Comments.Add(comment);
                 database.SaveChanges();

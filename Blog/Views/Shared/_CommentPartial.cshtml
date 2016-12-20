@@ -1,14 +1,14 @@
 ﻿@model Blog.Models.Comment
+@using Blog.Models
 
-@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("Create", "Comment", new { id = Model.ArticleId }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
-        @Html.TextAreaFor(m => m.Content, new { @class = "pull-left", style = "width:40%", rows = "3" })
-            <input type="submit" value="Comment" class="btn btn-success"
-                    style="height: 65px; width: 120px" />
+        @Html.TextAreaFor(m => m.Content, new { @class = "pull-left", style = "width:40%", rows = "2" })
+        <input type="submit" value="Comment" class="btn btn-success"
+                style="height: 45px; width: 85px" />
     }
 }

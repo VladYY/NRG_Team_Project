@@ -39,11 +39,35 @@
 
             </div>
             <br />
+            <br />
             <div>
                 <p>
                     @if (Request.IsAuthenticated)
                     {
                         @Html.Partial("_CommentPartial", new Comment() { ArticleId = Model.Id })
+                    }
+                </p>
+                <p>
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="bs-component">
+                            <blockquote>
+                                <p>
+                                    @comment.Content
+                                </p>
+                                <small>
+                                    Comment:
+                                    <site title="Sourse Title">
+                                        @*@int count = 0;
+                                        @for (int i = 0; i < length; i++)
+                                        {
+                                            count++;
+                                        }
+                                        count*@
+                                    </site>
+                                </small>
+                            </blockquote>
+                        </div>
                     }
                 </p>
             </div>
